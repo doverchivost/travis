@@ -1,9 +1,3 @@
-
-Great, Travis and cppcheck have detected this problem. Due to this, the Travis build has failed. The person that submitted this commit may have been reminded that in C++ indices start at zero.
-Adding static code analysis tools to a Travis scripts do not only help experts. As in this example, it may help teach beginners. It will give them a friendly reminder about how the language works, instead of a segmentation fault that may-or-may-not occur.
-Profiling your code
-Some beginner C++ programmers have an obsession with run-time speed. It is known we should prefer measuring over following a gut-feeling, but a beginner may not know how to do profiling.
-In this example, the runtime speed of std::sort is compared against a handcrafted (‘lightning fast!’) function:
 #include <algorithm>
 #include <cassert>
 #include <iostream>
