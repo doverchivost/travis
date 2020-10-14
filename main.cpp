@@ -2,5 +2,6 @@
 
 int main()
 {
-std::cout << "Hello world\n";
+	static_assert("C++17");
+	std::cout << "Hello world\n";
 }
