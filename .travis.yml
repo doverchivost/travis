@@ -4,18 +4,17 @@ dist: trusty
 
 before_install:
   # C++17
-  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
 
 install: 
   # C++17
   - sudo apt-get install -qq g++-6
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
-  # cppcheck
-  - sudo apt-get install -qq cppcheck
 
 script: 
-  # Build and run this project
-  - g++ main.cpp -std=c++17 -o travis_gcc_cpp17_cppcheck
-  - ./travis_gcc_cpp17_cppcheck
-  # cppcheck
+  - g++ main.cpp -DNDEBUG -O2 -pg -std=c++17 -o travis_gcc_cpp17_gprof
+  - ./travis_gcc_cpp17_gprof 
+  # produce the gprof log
+  - gprof ./travis_gcc_cpp17_gprof  > gprof.log
+  - head gprof.log -n 100
